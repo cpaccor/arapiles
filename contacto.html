@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+    <nav>
+        <div id="logo">
+            <a href="index.html">
+                <img src="img/Logo_Naranja.webp" alt="logo">
+            </a>
+            <button></button>
+        </div>
+
+        <div id="menu">
+            <ul>
+                <li class="botonMenu">
+                    <a class="txtBoton" href="reglamento.html">REGLAMENTO</a>
+                </li>
+                <li class="botonMenu">
+                    <a class="txtBoton" href="contacto.html">CONTACTO</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</header>
+<div id="cardCrono" style="display: none;">
+    <div id="crono">
+
+    </div>
+</div>
+<p class="mensajeContacto">Si tienes alguna pregunta no dudes en contactarnos.</p>
+    
+    <div class="contenedorForm">
+        <form action="https://formsubmit.co/cristian_pac@live.com" method="POST" class="form">
+          <div class="descripcion">Contactanos</div>
+          <div class="input">
+              <input required="" autocomplete="off" type="text" name="name" autofocus>
+              <label for="Nombre" >Nombre</label>
+          </div>
+    
+          <div class="input">
+              <input required="" autocomplete="off" name="email" type="email">
+              <label for="email">E-mail</label>
+          </div>
+    
+          <div class="input">
+              <textarea required="" cols="25" rows="4" id="mensaje" name="coments"></textarea>
+              <label for="Mensaje">mensaje</label>
+          </div>
+          <button type="submit">Enviar mensaje →</button>
+        </form>
+    </div>
+    
+</body>
+<footer>
+    <p>
+        &copy; 2024 CE Arapiles. Todos los derechos reservados.
+    </p>
+</footer>
+</html>
