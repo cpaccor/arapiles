@@ -1,0 +1,716 @@
+
+:root { /*pseudo elemento para definir una paleta*/
+  --blanco:#ffffff;
+  --oscuro: #212121;
+  --primario: #F25C05;
+  --secundario:#F2DBAE;
+  --gris: #C8B7A7;
+  --naranja: #D96E30;
+
+}
+html {
+    scroll-behavior: auto;
+}
+body {
+    background-color: var(--blanco);
+    margin: 0px;
+}
+
+/*********HEADER*******/
+header {
+    background-color:var(--secundario);
+    position: fixed;
+    top: 0; /* Ajusta la posición vertical */
+    left: 0;
+    width: 100%;
+    margin: auto;
+    z-index: 3;
+}
+nav {
+    display: flex;
+    width: 100%;
+    /*dividimos los elementos en el espacio unifomemente*/
+    justify-content: space-between;
+    z-index: 2;
+
+}
+
+#logo, #escudo {
+    /*les asignamos un espacio*/
+    flex: 1;    
+}
+@media (min-width: 481px) {
+  #logo button {
+    display: none;
+
+  }
+}
+#menu {
+    display: flex;
+    /*le asignamos un espacio*/
+    flex: 1;    
+    align-items: center;
+    justify-content: center;      
+}
+#logo img{
+    width: 90px;
+    height: 90px;
+    border-radius: 50px;
+    margin-left: 20px;
+    margin-top: 3px;    
+}
+
+
+ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    margin:0px 25px;
+    padding: 10px;
+    text-align: center;    
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+/************BOTONES MENU ****************/
+.botonMenu {
+    
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: #373737 solid 3px;
+    border-radius: 5px;
+    overflow: hidden;
+    user-select: none;
+    background-color: var(--secundario);
+    cursor: pointer;   
+    
+}
+
+.botonMenu::after, .botonMenu::before {
+    content: "";
+    position: absolute;
+    width: 160px;
+    aspect-ratio: 1;
+    background: var(--primario);
+    opacity: 50%;
+    border-radius: 50%;
+    transition: transform 500ms, background 300ms;
+  }
+  .botonMenu::before {
+    left: 0;
+    transform: translateX(-150px);
+  }
+  
+  .botonMenu::after {
+    right: 0;
+    transform: translateX(150px);
+  }
+  
+  .botonMenu:hover:before {
+    transform: translateX(-2px);
+  }
+  
+  .botonMenu:hover:after {
+    transform: translateX(2px);
+  }
+
+  .txtBoton{
+    text-decoration: none;
+    padding: 0px 10px;
+    color: var(--oscuro);
+    z-index: 2;
+    text-shadow: 1px 1px 5px var(--blanco);
+    
+  }
+  /**media query nav**/
+  @media (max-width:480px){    
+    
+    #logo {      
+      position: fixed;
+      top: 0;
+      width: 100%;      
+      justify-content: space-between;
+      display: flex;
+      align-items: center; background-color: var(--secundario);  
+      
+    }
+    #logo button {
+      border: none;
+      background-image: url(img/Menu.webp); 
+      background-size: cover;     
+      padding: 20px;
+      margin-right: 40px;
+      border-radius: 10px;
+      
+    }
+    #menu {
+      position: fixed;
+      z-index: 2;
+      width: 100%;
+      height: 100vh;      
+      top: 95px; /*le resta de arriba el tamaño del logo*/      
+      transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+      -moz-transform: translateX(-200%);
+      -o-transform: translateX(-100%);
+      transition: 1s;
+      -webkit-transition: 1s;
+      -moz-transition: 1s;
+      -o-transition: 1s;
+    }
+
+    #menu.activo{/*se añadira funcionalidad con javascript*/
+      transform: translateX(0%);
+      -webkit-transform: translateX(0%);
+      -moz-transform: translateX(0%);
+      -o-transform: translateX(0%);
+      transition: 1s;
+      -webkit-transition: 1s;
+      -moz-transition: 1s;
+      -o-transition: 1s;
+      background-color: var(--secundario);
+      height: 100vh;
+      z-index: 2;
+    }
+    #menu ul{      
+      flex-direction: column;
+      align-self: self-start;/*alinia los items hacia el top*/    
+      gap: 10px;
+      padding:20px 0;      
+    }
+    .botonMenu {
+      justify-content: center; /* Centra el texto del botón */
+  }
+    
+  }
+  /***********CRONO************/
+#crono {    
+  font-size: 35px;
+  font-weight: bold;
+  color: var(--blanco);
+  z-index: 3;
+    
+}
+#cardCrono {
+  margin: 47px auto 0px ;    
+  position: fixed;     
+  background: var(--oscuro);
+  width: 310px;
+  height: 60px;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  left: 50%; /* Centra horizontalmente */
+  transform: translateX(-50%); /* Centra horizontalmente */
+  z-index: 2;
+}
+
+
+#cardCrono::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255, 48, 255));
+  height: 330px;
+  animation: rotBGimg 4s linear infinite;
+  transition: all 0.2s linear;
+}
+
+@keyframes rotBGimg {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#cardCrono::after {
+  content: '';
+  position: absolute;
+  background: var(--oscuro);
+  inset: 5px;
+  border-radius: 15px;
+}  
+/*@media (max-width: 480px) {*//*lo utilizamos para quitar el t¡crono en el menu de pantallas pequeñas*/
+  /*#cardCrono {
+    display: none;  
+  }
+}*/
+
+
+    
+
+
+  /******CONTENEDOR*****/
+  .contenedor {
+    
+    width: 100%;
+    height: 95vh;
+    margin: 50px auto;/*paramaetro para centrarlo y separar de borde superior*/
+    padding-top: 20px;
+    text-align: center;
+    background-image:url(img/fondo_2.webp);
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-size: cover; /* Hace que la imagen cubra todo el contenedor sin distorsionarse */
+    /* Opcional: ajusta el posicionamiento de la imagen */
+    background-position: center top; 
+}
+@media (max-width: 480px) { /* Aplicar estilos específicos para pantallas de hasta 480px de ancho */
+  .contenedor {
+      background-position: calc(0% - 220px);/*posición de la imagen a la izquierda en pantallas pequeñas */
+  }
+}
+
+h1 {
+    font-size: 35px;
+    background-color: #373737;
+    margin: 100px auto 0 auto;
+    max-width: 350px;
+    color: #ffffff;
+    padding: 10px;    
+    border-radius: 10px;
+}
+
+h2 {
+    font-size: 25px;
+    background-color: #373737;
+    margin-bottom: 20px;
+    margin: 50px auto;
+    padding: 15px;
+    color: #ffffff;
+    width: 750px;
+    max-width: 90%;
+    border-radius: 10px;
+}
+
+.parrafoResumen {
+    font-size: 20px;
+    line-height: 1.5;
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 12px;
+    margin: 30px;  
+    border-radius: 10px;
+    font-weight: bold;   
+}
+
+
+  /***********CARTAS*****************/
+  .introduccionCartas{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+  }
+  .introduccionCartas p{
+    margin: auto;
+    padding: auto;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    max-width: 90%;
+    
+  } 
+  #cartasImagenes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+  }
+
+  .carta {
+    position: relative;
+    width: 300px;
+    height: 350px;
+    margin: 20px;
+    cursor: pointer;
+    
+    
+  }
+
+  .cartaCuerpo{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: .5s;
+    z-index: 1;
+  }
+
+  .cartaDelante {
+    transform: perspective(600px) rotateY(0deg);
+    box-shadow: 0 5px 10px #000000;
+    z-index: 1;
+  }
+
+  .carta img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+  }
+
+  .carta h3 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 50px;
+    background: rgb(0, 0, 0,.4)
+  }
+
+  .cartaDetras {
+    transform: perspective(600px) rotateY(180deg);
+    background: rgb(3, 35, 54) ;
+    
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align:  center;
+    z-index: 1;
+    }
+
+  .cartaDetras p {
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin: 15px;
+  }
+
+  .carta:hover .cartaDelante {
+    transform: perspective(600px) rotateY(180deg);
+  }
+  .carta:hover .cartaDetras {
+    transform: perspective(600px) rotateY(360deg);
+  }
+
+  /*************REDES**************/
+  #redes {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 15px;
+    list-style: none;
+    padding-top: 30px;
+
+  }
+  #redes h2 {
+    background-color: var(--gris);
+    text-align: center;
+    margin: 30px auto;    
+    width: 500px;
+    font-size: 25px;
+    max-width: 90%;
+  }
+
+   
+  .iconosRedes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .iconosRedes .contenidoIcono {
+    margin: 0 10px;
+    position: relative;
+  }
+  .iconosRedes .contenidoIcono .tooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  .iconosRedes .contenidoIcono:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: -23px;
+  }
+  .iconosRedes .contenidoIcono a {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #4d4d4d;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+  .iconosRedes .contenidoIcono a:hover {
+    box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+  }
+  .iconosRedes .contenidoIcono a svg {
+    position: relative;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+  }
+  .iconosRedes .contenidoIcono a:hover {
+    color: white;
+  }
+  .iconosRedes .contenidoIcono a .relleno {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #000;
+    transition: all 0.3s ease-in-out;
+  }
+  .iconosRedes .contenidoIcono a:hover .relleno {
+    height: 100%;
+  }
+  
+  .iconosRedes .contenidoIcono a[data-social="instagram"] .relleno,
+  .iconosRedes .contenidoIcono a[data-social="instagram"] ~ .tooltip {
+    background: linear-gradient(
+    45deg,
+    #405de6,
+    #5b51db,
+    #b33ab4,
+    #c135b4,
+    #e1306c,
+    #fd1f1f)
+  }
+  @media (max-width: 768px){
+   .iconoInsta {
+    background: linear-gradient(
+    45deg,
+    #405de6,
+    #5b51db,
+    #b33ab4,
+    #c135b4,
+    #e1306c,
+    #fd1f1f)
+   }
+  }
+
+  
+  
+  /***********COLABORADORES*************/
+  #colaboradores {
+    display: block;
+    padding: 10px 0;
+    
+    
+  }
+  #colaboradores h2 { 
+    background-color: rgba(209, 209, 209, 0.4) ;
+    width: 300px;    
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    color: #000000;
+    text-transform: uppercase;
+    margin: 20px auto;
+
+  }
+  .logoColaboradores {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  #colaboradores img {
+    width: auto;
+    height: 50px;
+    border: solid 1px #000000;
+    box-shadow: 0 5px 10px #000000;
+    margin: 10px;
+  }
+
+  /************************reglamento***********************/
+  #reglamento {
+    
+    background-color: var(--gris);
+    margin: 110px 30px 20px 30px;
+    width: auto;    
+    border-radius: 10px;
+    padding: 15px;
+    
+  }
+  #reglamento h1 {
+    margin: auto;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  #reglamento .tiuloP {
+    font-size: 19px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  #reglamento .textoP {
+    text-align: justify;
+    font-size: 16px;
+    margin-inline:20px;
+    line-height: 1.5;  }
+
+    /************COntacto.html****************/
+    .mensajeContacto{
+      margin: auto;
+      margin-top: 110px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .contenedorForm {
+      margin: 5px auto 10px;
+      
+      
+      width: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-radius: 3px;
+      border: 2px solid var(--oscuro);
+      background: linear-gradient(to right, #005c97, #363795);
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      border-radius: 10px;
+    }
+    
+    .contenedorForm form .descripcion {
+      font-size: 20px;
+      font-weight: 500;
+      color: #e8e8e8;
+      margin-bottom: 25px;
+      margin-top: 25px;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    
+    .form {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .input, textarea {
+      margin:auto;
+      width: auto;
+      position: relative;
+      padding: 15px;
+    }
+    
+    .input input, textarea {
+      font-size: 100%;
+      padding: 20px;
+      outline: none;
+      color: #e8e8e8;
+      border: none;
+      border-bottom: 2px solid #e8e8e8;
+      background: transparent;
+      border-radius: none;
+      width: auto;
+      resize: none;
+    }
+    
+    .input label {
+      font-size: 100%;
+      position: absolute;
+      left: 0;
+      color: #e8e8e8;
+      padding: 0px;
+      pointer-events: none;
+      transition: all 0.5s ease;
+      text-transform: uppercase;
+    }
+    
+    .input :is(input:focus, input:valid)~label {
+      transform: translateY(-50%) scale(.9);
+      margin: auto;
+      background: transparent;
+    }
+    
+    .input textarea:focus ~ label,
+    .input textarea:valid ~ label {
+      transform: translateY(-50%) scale(.9);
+      margin: auto;
+      padding: 10px;
+      background: transparent;
+    }
+    
+    .inputGroup :is(input:focus, input:valid) {
+      border-color: rgb(37, 37, 211);
+    }
+    
+    .form button {
+      color: #e8e8e8;
+      font-size: 15px;
+      align-self: flex-start;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 60px;
+      background: transparent;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .form button:before {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #e8e8e8;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .form button:hover:before {
+      opacity: 0.2;
+    }
+    
+    .form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    @media (max-width: 480px) {
+      .contenedorForm {
+        margin: 10px;
+        width: auto;
+        margin-top: 10px;
+      }
+    }
+    
+
+
+   /************footer***************/
+  footer {
+    background-color: #373737;
+    color: #ffffff;
+    padding: 15px;
+    text-align: center;
+  }
+
+
+  
