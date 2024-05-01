@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Inscripción</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="logo">
+                <a href="index.html">
+                    <img src="img/Logo_Naranja.webp" alt="logo">
+                </a>
+                <button></button>
+            </div>
+
+            <div id="menu">
+                <ul>
+                    <li class="botonMenu">
+                        <a class="txtBoton" href="reglamento.html">REGLAMENTO</a>
+                    </li>
+                    <li class="botonMenu">
+                        <a class="txtBoton" href="contacto.html">CONTACTO</a>
+                    </li>
+                    <li class="botonMenu">
+                        <a class="txtBoton" href="index.html">INICIO</a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+     </nav>
+    </header>
+    <h1>Formulario de Inscripción</h1>
+    <form action="inscripcion.php" method="POST">
+        <h2>Información del Equipo</h2>
+        <label for="nombre_equipo">Nombre del Equipo:</label>
+        <input type="text" id="nombre_equipo" name="nombre_equipo" required><br>
+        
+        <h2>Información de los Participantes</h2>
+        <fieldset>
+            <legend>Participante 1</legend>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br>
+            <label for="apellido1">Primer Apellido:</label>
+            <input type="text" id="apellido1" name="apellido1" required><br>
+            <label for="apellido2">Segundo Apellido:</label>
+            <input type="text" id="apellido2" name="apellido2" required><br>
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni" required><br>
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" name="sexo">
+                <option value="Si">F</option>
+                <option value="No">M</option>
+            </select><br>
+            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required><br>
+            <label for="fcse">¿Pertenece a FCSE?</label>
+            <select id="fcse" name="fcse">
+                <option value="Si">Sí</option>
+                <option value="No">No</option>
+            </select><br>
+            <label for="matricula">Matrícula del Vehículo:</label>
+            <input type="text" id="matricula" name="matricula"><br>
+        </fieldset>
+        <!--<fieldset>
+            <legend>Participante 2</legend>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br>
+            <label for="apellido1">Primer Apellido:</label>
+            <input type="text" id="apellido1" name="apellido1" required><br>
+            <label for="apellido2">Segundo Apellido:</label>
+            <input type="text" id="apellido2" name="apellido2" required><br>
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni" required><br>
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" name="sexo">
+                <option value="Si">F</option>
+                <option value="No">M</option>
+            </select><br>
+            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required><br>
+            <label for="fcse">¿Pertenece a FCSE?</label>
+            <select id="fcse" name="fcse">
+                <option value="Si">Sí</option>
+                <option value="No">No</option>
+            </select><br>
+            <label for="matricula">Matrícula del Vehículo:</label>
+            <input type="text" id="matricula" name="matricula"><br>
+        </fieldset>-->
+
+        <!-- Repite el bloque de campos para cada participante (2, 3, 4) -->
+
+        <input type="submit" value="Enviar Inscripción">
+    </form>
+</body>
+</html>
