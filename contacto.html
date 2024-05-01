@@ -22,8 +22,9 @@
                 <li class="botonMenu">
                     <a class="txtBoton" href="reglamento.html">REGLAMENTO</a>
                 </li>
+                
                 <li class="botonMenu">
-                    <a class="txtBoton" href="contacto.html">CONTACTO</a>
+                    <a class="txtBoton" href="index.html">INICIO</a>
                 </li>
 
             </ul>
@@ -35,30 +36,44 @@
 
     </div>
 </div>
-<p class="mensajeContacto">Si tienes alguna pregunta no dudes en contactarnos.</p>
+<p class="mensajeContacto">Si tienes alguna pregunta no dudes en contactarnos. <br>
+O puedes llamarnos al 123456789</p>
     
-    <div class="contenedorForm">
+<form action="" method="POST" id="formContacto">
+    <p class="tituloForm">Contactanos</p>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" required="">
+        <label for="email">Email</label>
+        <input type="email" id="email" required="">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" cols="25" rows="4"></textarea>
+        
+        <button type="submit">Enviar mensaje</button>
+</form>
+    <!--<div class="contenedorForm">
         <form action="https://formsubmit.co/cristian_pac@live.com" method="POST" class="form">
           <div class="descripcion">Contactanos</div>
           <div class="input">
-              <input required="" autocomplete="off" type="text" name="name" autofocus>
               <label for="Nombre" >Nombre</label>
+              <input required="" autocomplete="off" type="text" name="name" autofocus>
+              
           </div>
     
           <div class="input">
-              <input required="" autocomplete="off" name="email" type="email">
               <label for="email">E-mail</label>
+              <input required="" autocomplete="off" name="email" type="email">
+              
           </div>
     
           <div class="input">
-              <textarea required="" cols="25" rows="4" id="mensaje" name="coments"></textarea>
               <label for="Mensaje">mensaje</label>
+              <textarea required="" cols="25" rows="4" id="mensaje" name="coments"></textarea>              
           </div>
           <button type="submit">Enviar mensaje →</button>
         </form>
     </div>
     
-</body>
+</body>-->
 <footer>
     <p>
         &copy; 2024 CE Arapiles. Todos los derechos reservados.
