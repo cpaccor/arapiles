@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Inscripción</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="validarEquipo.js"></script>
+    <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <nav>
@@ -27,73 +32,217 @@
                     <li class="botonMenu">
                         <a class="txtBoton" href="index.html">INICIO</a>
                     </li>
-                    
-                    
+
                 </ul>
             </div>
-     </nav>
+        </nav>        
     </header>
-    <h1>Formulario de Inscripción</h1>
-    <form action="inscripcion.php" method="POST">
+    <div id="cardCrono" style="display: none;">
+        <div id="crono">
+    
+        </div>
+    </div>
+    <div id="mensaje"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            //  se comprueba si existe añgun mensaje en la url
+            const urlParams = new URLSearchParams(window.location.search);
+            const mensaje = urlParams.get('mensaje');
+    
+            // sihay algun mensaje lo mostraremos
+            if (mensaje) {
+                //pobtenemos el elemento donde se mostrará el mensaje y lo almacenanios en una constante
+                const elementoMensaje = document.getElementById('mensaje');
+                //agregamops el mensaje al elemento
+                elementoMensaje.innerHTML = '<p>' + mensaje + '</p>';
+
+                // Eliminamos el mensaje de la URL para que al actualizar no sevuelva a visualizar
+                const nuevaURL = window.location.href.split('?')[0];
+                history.replaceState({}, document.title, nuevaURL);
+            }
+        });
+    </script>
+    
+    <h1 class="tituloFormInscripcion">Formulario de Inscripción</h1>
+    <form action="procesarFormulario.php" method="POST" id="formInscripcion">
         <h2>Información del Equipo</h2>
-        <label for="nombre_equipo">Nombre del Equipo:</label>
-        <input type="text" id="nombre_equipo" name="nombre_equipo" required><br>
-        
+        <div><!--div's crerados para crear bloques para el diseño en css-->
+        <label for="nombreEquipo">Nombre del Equipo:</label>
+        <input type="text" id="nombreEquipo" name="nombreEquipo" required>
+        </div>
+
         <h2>Información de los Participantes</h2>
-        <fieldset>
+        <!--inicio participante 1-->
+        <fieldset class="participante">
             <legend>Participante 1</legend>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required><br>
-            <label for="apellido1">Primer Apellido:</label>
-            <input type="text" id="apellido1" name="apellido1" required><br>
-            <label for="apellido2">Segundo Apellido:</label>
-            <input type="text" id="apellido2" name="apellido2" required><br>
-            <label for="dni">DNI:</label>
-            <input type="text" id="dni" name="dni" required><br>
-            <label for="sexo">Sexo:</label>
-            <select id="sexo" name="sexo">
-                <option value="Si">F</option>
-                <option value="No">M</option>
-            </select><br>
-            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required><br>
-            <label for="fcse">¿Pertenece a FCSE?</label>
-            <select id="fcse" name="fcse">
-                <option value="Si">Sí</option>
-                <option value="No">No</option>
-            </select><br>
-            <label for="matricula">Matrícula del Vehículo:</label>
-            <input type="text" id="matricula" name="matricula"><br>
-        </fieldset>
-        <!--<fieldset>
+            <div>
+                <label for="nombre_1">Nombre:</label>
+                <input type="text" id="nombre_1" name="nombre_1" required>
+            </div>
+            <div>
+                <label for="apellido1_1">Primer Apellido:</label>
+                <input type="text" id="apellido1_1" name="apellido1_1" required>
+            </div>
+            <div>
+                <label for="apellido2_1">Segundo Apellido:</label>
+                <input type="text" id="apellido2_1" name="apellido2_1" required>
+            </div>
+            <div>
+                <label for="dni_1">DNI:</label>
+                <input type="text" id="dni_1" name="dni_1" required>
+            </div>
+            <div>
+                <label for="sexo_1">Sexo:</label>
+                <select id="sexo_1" name="sexo_1">
+                    <option value="F">F</option>
+                    <option value="M">M</option>
+                </select>
+            </div>
+            <div>
+                <label for="fechaNacimiento_1">Fecha de Nacimiento:</label>
+                <input type="date" id="fechaNacimiento_1" name="fechaNacimiento_1" required>
+            </div>
+            <div>
+                <label for="fcse_1">¿Pertenece a FCSE?</label>
+                <select id="fcse_1" name="fcse_1">
+                    <option value="Si">Sí</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div>
+                <label for="matricula_1">Matrícula Vehículo:</label>
+                <input type="text" id="matricula_1" name="matricula_1">
+            </div>
+        </fieldset><!--fin participante 1-->
+        <!--inicio participante 2-->
+        <fieldset class="participante">
             <legend>Participante 2</legend>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required><br>
-            <label for="apellido1">Primer Apellido:</label>
-            <input type="text" id="apellido1" name="apellido1" required><br>
-            <label for="apellido2">Segundo Apellido:</label>
-            <input type="text" id="apellido2" name="apellido2" required><br>
-            <label for="dni">DNI:</label>
-            <input type="text" id="dni" name="dni" required><br>
-            <label for="sexo">Sexo:</label>
-            <select id="sexo" name="sexo">
-                <option value="Si">F</option>
-                <option value="No">M</option>
-            </select><br>
-            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required><br>
-            <label for="fcse">¿Pertenece a FCSE?</label>
-            <select id="fcse" name="fcse">
-                <option value="Si">Sí</option>
-                <option value="No">No</option>
-            </select><br>
-            <label for="matricula">Matrícula del Vehículo:</label>
-            <input type="text" id="matricula" name="matricula"><br>
-        </fieldset>-->
+            <div>
+                <label for="nombre_2">Nombre:</label>
+                <input type="text" id="nombre_2" name="nombre_2" required>
+            </div>
+            <div>
+                <label for="apellido1_2">Primer Apellido:</label>
+                <input type="text" id="apellido1_2" name="apellido1_2" required>
+            </div>
+            <div>
+                <label for="apellido2_2">Segundo Apellido:</label>
+                <input type="text" id="apellido2_2" name="apellido2_2" required>
+            </div>
+            <div>
+                <label for="dni_2">DNI:</label>
+                <input type="text" id="dni_2" name="dni_2" required>
+            </div>
+            <div>
+                <label for="sexo_2">Sexo:</label>
+                <select id="sexo_2" name="sexo_2">
+                    <option value="F">F</option>
+                    <option value="M">M</option>
+                </select>
+            </div>
+            <div>
+                <label for="fechaNacimiento_2">Fecha de Nacimiento:</label>
+                <input type="date" id="fechaNacimiento_2" name="fechaNacimiento_2" required>
+            </div>
+            <div>
+                <label for="fcse_2">¿Pertenece a FCSE?</label>
+                <select id="fcse_2" name="fcse_2">
+                    <option value="Si">Sí</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div>
+                <label for="matricula_2">Matrícula del Vehículo:</label>
+                <input type="text" id="matricula_2" name="matricula_2">
+            </div>
+        </fieldset><!--fin participante 2-->
+        <!--inicio participante 3-->
+        <fieldset class="participante">
+            <legend >Participante 3</legend>
+            <div>
+                <label for="nombre_3">Nombre:</label>
+                <input type="text" id="nombre_3" name="nombre_3" required>
+            </div>
+            <div>
+                <label for="apellido1_3">Primer Apellido:</label>
+                <input type="text" id="apellido1_3" name="apellido1_3" required>
+            </div>
+            <div>
+                <label for="apellido2_3">Primer Apellido:</label>
+                <input type="text" id="apellido2_3" name="apellido2_3" required>
+            </div>
+            <div>
+                <label for="dni_3">DNI:</label>
+                <input type="text" id="dni_3" name="dni_3" required>
+            </div>
+            <div>
+                <label for="sexo_3">Sexo:</label>
+                <select id="sexo_3" name="sexo_3">
+                    <option value="F">F</option>
+                    <option value="M">M</option>
+                </select>
+            </div>
+            <div>
+                <label for="fechaNacimiento_3">Fecha de Nacimiento:</label>
+                <input type="date" id="fechaNacimiento_3" name="fechaNacimiento_3" required>
+            </div>
+            <div>
+                <label for="fcse_3">¿Pertenece a FCSE?</label>
+                <select id="fcse_3" name="fcse_3">
+                    <option value="Si">Sí</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div>
+                <label for="matricula_3">Matrícula Vehículo:</label>
+                <input type="text" id="matricula_3" name="matricula_3">
+            </div>
+        </fieldset><!--fin participante 3-->
+        <!--inicio participante 4-->
+        <fieldset class="participante">
+            <legend >Participante 4</legend>
+            <div>
+                <label for="nombre_4">Nombre:</label>
+                <input type="text" id="nombre_4" name="nombre_4" required>
+            </div>
+            <div>
+                <label for="apellido1_4">Primer Apellido:</label>
+                <input type="text" id="apellido1_4" name="apellido1_4" required>
+            </div>
+            <div>
+                <label for="apellido2_4">Primer Apellido:</label>
+                <input type="text" id="apellido2_4" name="apellido2_4" required>
+            </div>
+            <div>
+                <label for="dni_4">DNI:</label>
+                <input type="text" id="dni_4" name="dni_4" required>
+            </div>
+            <div>
+                <label for="sexo_4">Sexo:</label>
+                <select id="sexo_4" name="sexo_4">
+                    <option value="F">F</option>
+                    <option value="M">M</option>
+                </select>
+            </div>
+            <div>
+                <label for="fechaNacimiento_4">Fecha de Nacimiento:</label>
+                <input type="date" id="fechaNacimiento_4" name="fechaNacimiento_4" required>
+            </div>
+            <div>
+                <label for="fcse_4">¿Pertenece a FCSE?</label>
+                <select id="fcse_4" name="fcse_4">
+                    <option value="Si">Sí</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div>
+                <label for="matricula_4">Matrícula Vehículo:</label>
+                <input type="text" id="matricula_4" name="matricula_4">
+            </div>
+        </fieldset><!--fin participante 4-->
 
-        <!-- Repite el bloque de campos para cada participante (2, 3, 4) -->
-
-        <input type="submit" value="Enviar Inscripción">
+        <button type="submit">Enviar inscripción</button>
     </form>
 </body>
+
 </html>
