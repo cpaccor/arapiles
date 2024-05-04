@@ -626,7 +626,7 @@ padding-bottom:30px ;
 .tituloFormInscripcion {
   font-size: 25px;
   text-align: center;
-  margin: 10px auto 10px;
+  margin: 110px auto 10px;
   width:  fit-content;
   padding: 10px 15px;
   background-color: var(--semioscuro);
@@ -657,13 +657,13 @@ padding-bottom:30px ;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  max-width: 760px;/*este medida para evitar que se corten los input con sus labels*/
+  max-width: 830px;
   width: 90vw;/*ya que el margin es auto compensamos acupando solo el 90 del vW*/
 }
 #formInscripcion .participante {
   display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;  
+    justify-content: space-between;  
    row-gap: 5px;/*para tener una separación simetrica entre elementos*/
   margin: 10px 0;
 }
@@ -672,10 +672,23 @@ padding-bottom:30px ;
   font-weight: bold;
   margin: 5px;  
 }
+
 #formInscripcion input {
-  width: 110px;
+  width: 120px;
   border-radius: 3px;
+  font-size: 12px;
 }
+.inputEmail {
+  min-width: 300px;
+}
+#nombre_1,
+#nombre_2,
+#nombre_3,
+#nombre_4
+{
+  min-width: 150px;
+}
+
 #formInscripcion select {
   border-radius: 4px;
 }
@@ -687,18 +700,48 @@ padding-bottom:30px ;
   font-size: 15px;
 }
 #formInscripcion #nombreEquipo {
-  width: 200px;
+  width:300px;
   margin: 10px 0;
-  font-size: 18px;
+  font-size: 16px;
 }
-
-
+.iconoInformacion {
+  background-color: var(--semioscuro);
+  color: var(--blanco);
+  font-size: 12px;
+  padding:1px 5px;
+  border-radius: 50%;
+  border: var(--blanco) solid 1px;
+}
 
 /*******************error*******************/
-#mensaje {
-  margin: 110px auto 10px;
-  font-size: 20px;
+#errores {
+  display: flex;
+  justify-content: center;
+    flex-wrap: wrap;
+  margin: 10px auto 10px;
+  font-size: 17px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 0, 0, 0.18);
+  border-radius: 3px;  
+  width: fit-content;  
 }
+#errores .parrafoMensaje{
+  background-color: rgba(0, 128, 0, 0.765);
+  padding: 10px;
+  margin: auto;
+  color: var(--blanco);
+  font-weight: bold;
+  border-radius: 3px;
+  text-align: center;
+}
+#errores .mensajeError{
+  padding: 10px;
+  margin: auto;
+  border-radius: 3px;
+  text-align: center;
+}
+
 
 /************footer***************/
 footer {
