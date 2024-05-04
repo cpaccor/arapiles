@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Inscripción</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="validarEquipo.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -42,19 +40,32 @@
     
         </div>
     </div>
-    <div id="mensaje"></div>
+    
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             //  se comprueba si existe añgun mensaje en la url
             const urlParams = new URLSearchParams(window.location.search);
+            //creamos dos constantes una para mensajes correctos y otra para los errores
+            const mensajeError = urlParams.get('mensajeError');
             const mensaje = urlParams.get('mensaje');
     
             // sihay algun mensaje lo mostraremos
-            if (mensaje) {
+            if (mensajeError) {
                 //pobtenemos el elemento donde se mostrará el mensaje y lo almacenanios en una constante
-                const elementoMensaje = document.getElementById('mensaje');
+                const elementoMensaje = document.getElementById('errores');
                 //agregamops el mensaje al elemento
-                elementoMensaje.innerHTML = '<p>' + mensaje + '</p>';
+                elementoMensaje.innerHTML = '<p class="mensajeError">' + mensajeError + '</p>';
+
+                // Eliminamos el mensaje de la URL para que al actualizar no se vuelva a visualizar
+                const nuevaURL = window.location.href.split('?')[0];
+                history.replaceState({}, document.title, nuevaURL);
+            }
+            if(mensaje) {
+                //pobtenemos el elemento donde se mostrará el mensaje y lo almacenanios en una constante
+                const elementoMensaje = document.getElementById('errores');
+                //agregamops el mensaje al elemento
+                elementoMensaje.innerHTML = '<p class="parrafoMensaje">' + mensaje + '</p>';
 
                 // Eliminamos el mensaje de la URL para que al actualizar no sevuelva a visualizar
                 const nuevaURL = window.location.href.split('?')[0];
@@ -64,6 +75,7 @@
     </script>
     
     <h1 class="tituloFormInscripcion">Formulario de Inscripción</h1>
+    <div id="errores"></div>
     <form action="procesarFormulario.php" method="POST" id="formInscripcion">
         <h2>Información del Equipo</h2>
         <div><!--div's crerados para crear bloques para el diseño en css-->
@@ -89,7 +101,7 @@
             </div>
             <div>
                 <label for="dni_1">DNI:</label>
-                <input type="text" id="dni_1" name="dni_1" required>
+                <input type="text" id="dni_1" name="dni_1"  placeholder="12345678A" required>
             </div>
             <div>
                 <label for="sexo_1">Sexo:</label>
@@ -112,6 +124,11 @@
             <div>
                 <label for="matricula_1">Matrícula Vehículo:</label>
                 <input type="text" id="matricula_1" name="matricula_1">
+                <span class="iconoInformacion" title="La matrícula del vehículo es obligatoria para poder acceder el vehículo a las instalaciones, verifique que sea la correcta.">?</span>
+            </div>
+            <div>
+                <label for="email_1">Correo Electrónico:</label>
+                <input type="email" id="email_1" name="email_1" required>
             </div>
         </fieldset><!--fin participante 1-->
         <!--inicio participante 2-->
@@ -131,7 +148,7 @@
             </div>
             <div>
                 <label for="dni_2">DNI:</label>
-                <input type="text" id="dni_2" name="dni_2" required>
+                <input type="text" id="dni_2" name="dni_2"  placeholder="12345678A" required>
             </div>
             <div>
                 <label for="sexo_2">Sexo:</label>
@@ -152,8 +169,13 @@
                 </select>
             </div>
             <div>
-                <label for="matricula_2">Matrícula del Vehículo:</label>
+                <label for="matricula_2">Matrícula Vehículo:</label>
                 <input type="text" id="matricula_2" name="matricula_2">
+                <span class="iconoInformacion" title="La matrícula del vehículo es obligatoria para poder acceder el vehículo a las instalaciones, verifique que sea la correcta.">?</span>
+            </div>
+            <div>
+                <label for="email_2">Correo Electrónico:</label>
+                <input type="email" id="email_2" name="email_2" required>
             </div>
         </fieldset><!--fin participante 2-->
         <!--inicio participante 3-->
@@ -168,12 +190,12 @@
                 <input type="text" id="apellido1_3" name="apellido1_3" required>
             </div>
             <div>
-                <label for="apellido2_3">Primer Apellido:</label>
+                <label for="apellido2_3">Segundo Apellido:</label>
                 <input type="text" id="apellido2_3" name="apellido2_3" required>
             </div>
             <div>
                 <label for="dni_3">DNI:</label>
-                <input type="text" id="dni_3" name="dni_3" required>
+                <input type="text" id="dni_3" name="dni_3" placeholder="12345678A" required>
             </div>
             <div>
                 <label for="sexo_3">Sexo:</label>
@@ -196,6 +218,11 @@
             <div>
                 <label for="matricula_3">Matrícula Vehículo:</label>
                 <input type="text" id="matricula_3" name="matricula_3">
+                <span class="iconoInformacion" title="La matrícula del vehículo es obligatoria para poder acceder el vehículo a las instalaciones, verifique que sea la correcta.">?</span>
+            </div>
+            <div>
+                <label for="email_3">Correo Electrónico:</label>
+                <input type="email" id="email_3" name="email_3" required>
             </div>
         </fieldset><!--fin participante 3-->
         <!--inicio participante 4-->
@@ -210,12 +237,12 @@
                 <input type="text" id="apellido1_4" name="apellido1_4" required>
             </div>
             <div>
-                <label for="apellido2_4">Primer Apellido:</label>
+                <label for="apellido2_4">Segundo Apellido:</label>
                 <input type="text" id="apellido2_4" name="apellido2_4" required>
             </div>
             <div>
                 <label for="dni_4">DNI:</label>
-                <input type="text" id="dni_4" name="dni_4" required>
+                <input type="text" id="dni_4" name="dni_4" placeholder="12345678A" required>
             </div>
             <div>
                 <label for="sexo_4">Sexo:</label>
@@ -238,10 +265,15 @@
             <div>
                 <label for="matricula_4">Matrícula Vehículo:</label>
                 <input type="text" id="matricula_4" name="matricula_4">
+                <span class="iconoInformacion" title="La matrícula del vehículo es obligatoria para poder acceder el vehículo a las instalaciones, verifique que sea la correcta.">?</span>
+            </div>
+            <div>
+                <label for="email_4">Correo Electrónico:</label>
+                <input type="email" id="email_4" name="email_4" required>
             </div>
         </fieldset><!--fin participante 4-->
 
-        <button type="submit">Enviar inscripción</button>
+        <button type="submit"  id="enviar">Enviar inscripción</button>
     </form>
 </body>
 
