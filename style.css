@@ -678,7 +678,10 @@ padding-bottom:30px ;
   border-radius: 3px;
   font-size: 12px;
 }
-.inputEmail {
+#email_1,
+#email_2,
+#email_3,
+#email_4 {
   min-width: 300px;
 }
 #nombre_1,

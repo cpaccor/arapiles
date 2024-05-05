@@ -118,8 +118,8 @@ window.onload = function () {
    * @returns {boolean} - devolvera true si en la validación no aparece algun erroreturns
    */
   function validarNombre() {
-    //creamos expresión regular para recibir solo letras
-    var patron = /^[a-zA-Z\s]+$/;
+    //creamos expresión regular para recibir solo letras, y alguno acentos
+    var patron = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/;
     var errorNombre = "";
 
     //realizamos un bucle para que recorra todas las variables de nomebde los participantes
@@ -151,7 +151,7 @@ window.onload = function () {
    */
   function validarApellido1() {
     //creamos expresión regular para recibir solo letras
-    var patron = /^[a-zA-Z\s]+$/;
+    var patron = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/;
     var errorApellido1 = "";
 
     //realizamos un bucle para que recorra todas las variables de nomebde los participantes
@@ -160,7 +160,7 @@ window.onload = function () {
       if (!patron.test(apellido1)) {
         //si apellidos contienen algo divferente a letras agrega el mensaje a la variable errores
         errorApellido1 +=
-          "los campos del primer apellido del participante " +
+          "El primer apellido del participante " +
           i +
           " solo pueden contener letras. <br>";
       }
@@ -183,7 +183,7 @@ window.onload = function () {
    */
   function validarApellido2() {
     //creamos expresión regular para recibir solo letras
-    var patron = /^[a-zA-Z\s]+$/;
+    var patron = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/;
     var errorApellido2 = "";
 
     //realizamos un bucle para que recorra todas las variables de nomebde los participantes
@@ -192,7 +192,7 @@ window.onload = function () {
       if (!patron.test(apellido2)) {
         //si apellidos contienen algo divferente a letras agrega el mensaje a la variable errores
         errorApellido2 +=
-          "los campos del segundo apellido del participante " +
+          "El segundo apellido del participante " +
           i +
           " solo pueden contener letras. <br>";
       }
