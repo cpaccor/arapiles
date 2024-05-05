@@ -569,6 +569,7 @@ li {
 }
 
 /************COntacto.html****************/
+
 .tituloFormContacto {
   font-size: 25px;
   text-align: center;
@@ -590,7 +591,14 @@ li {
   border-radius: 8px;
   max-width: 95vw;
 }
-
+.mensajeEnviado {
+  margin:  10px auto 10px;
+  text-align: center;
+  background-color: rgba(2, 119, 2, 0.516) ;
+  width: fit-content;
+  border-radius: 3px;
+  padding: 3px;
+}
 #formContacto {
   background-color: var(--gris);
   display: flex;

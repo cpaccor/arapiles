@@ -40,45 +40,33 @@
 
     </div>
 </div>
+
+
 <!-- Formulario de contacto -->
 <h1 class="tituloFormContacto">Formulario de contacto</h1>
+<!--mensaje de contacto enviado correctamente-->
 <p class="mensajeContacto">Si tienes alguna pregunta no dudes en contactarnos <br>
 O puedes llamarnos al telf: 123456789</p>
-    
-<form action="" method="POST" id="formContacto">
+<!--creamos un fragmento de php que valorará si se ha recibido mediante el metodo get
+mensaje-enviado=true para generar un texto -->
+<?php if(isset($_GET['mensaje_enviado']) && $_GET['mensaje_enviado'] == 'true'): ?>
+    <div >
+        <p class="mensajeEnviado">¡El mensaje ha sido enviado correctamente!</p>
+    </div>
+<?php endif; ?>    
+<form action="https://formsubmit.co/cristian_pac@live.com" method="POST" id="formContacto">
         <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" required="">
+        <input type="text" id="nombre" name="name" required="">
         <label for="email">Email</label>
-        <input type="email" id="email" required="">
+        <input type="email" id="email" name="email" required="">
         <label for="mensaje">Mensaje</label>
-        <textarea id="textoContacto" cols="25" rows="4"></textarea>
+        <textarea id="textoContacto" name="coment"cols="25" rows="4"></textarea>
+		<input type="hidden" name="_captcha" value="false">
+		<input type="hidden" name="_next" value="https://cpacdev.es/contacto.php?mensaje_enviado=true">
         
         <button type="submit">Enviar mensaje</button>
 </form>
-    <!--<div class="contenedorForm">
-        <form action="https://formsubmit.co/cristian_pac@live.com" method="POST" class="form">
-          <div class="descripcion">Contactanos</div>
-          <div class="input">
-              <label for="Nombre" >Nombre</label>
-              <input required="" autocomplete="off" type="text" name="name" autofocus>
-              
-          </div>
-    
-          <div class="input">
-              <label for="email">E-mail</label>
-              <input required="" autocomplete="off" name="email" type="email">
-              
-          </div>
-    
-          <div class="input">
-              <label for="Mensaje">mensaje</label>
-              <textarea required="" cols="25" rows="4" id="mensajeContacto" name="coments"></textarea>              
-          </div>
-          <button type="submit">Enviar mensaje →</button>
-        </form>
-    </div>
-    
-</body>-->
+
 <footer>
     <p>
         &copy; 2024 CE Arapiles. Todos los derechos reservados.
