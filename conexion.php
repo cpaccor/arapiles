@@ -1,5 +1,41 @@
 <?php
-$conexion = "mysql:dbname=pruebaarapiles;host:localhost";
+function establecer_conexion(&$bdd, &$conexion, &$usuario, &$clave) {
+    $conexion = "mysql:dbname=pruebaarapiles;host=localhost";
+    $usuario = "usuario1";
+    $clave = "usuario1";
+    try {
+        $bdd = new PDO($conexion, $usuario, $clave);
+        echo "Conexión con la base de datos establecida con éxito";
+    } catch(PDOException $incidencia) {
+        echo "Error con la base de datos: " . $incidencia->getMessage();
+    }
+}
+
+$bdd = null; // Inicializar la variable $bdd
+$conexion = ""; // Inicializar la variable $conexion
+$usuario = ""; // Inicializar la variable $usuario
+$clave = ""; // Inicializar la variable $clave
+
+// Llamar a la función para establecer la conexión
+establecer_conexion($bdd, $conexion, $usuario, $clave);
+
+// Ahora $bdd, $conexion, $usuario y $clave contienen los valores establecidos dentro de la función
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*$conexion = "mysql:dbname=pruebaarapiles;host:localhost";
 $usuario = "usuario1";
 $clave = "usuario1";
 try{$bdd = new PDO($conexion, $usuario, $clave);
@@ -8,7 +44,7 @@ try{$bdd = new PDO($conexion, $usuario, $clave);
 }catch(PDOException $incidencia){
     echo "error con la base de datos: ".$incidencia->getMessage();
 }
-
+*****************************
 /*namespace Clases;
 use PDO;
 use PDOException;
